@@ -29,6 +29,9 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   const timestamp = new Date().toISOString().replace('T', ' ').slice(0, 19);
   console.log(`\n\nWebhook received ${timestamp}\n`);
+  const userAgent = req.get('User-Agent') || 'Onbekend';
+console.log(`\n\n📩 Webhook received ${timestamp}`);
+console.log(`🕵️‍♂️ User-Agent: ${userAgent}\n`);
   console.log(JSON.stringify(req.body, null, 2));
   res.status(200).end();
 });
